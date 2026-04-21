@@ -1,6 +1,5 @@
 # <img src="logo.svg" width="32" height="32" alt="Logo" style="vertical-align: middle; margin-right: 8px;"> AI Energy Impact Visualizer
 
-<<<<<<< copilot/create-ai-energy-impact-visualizer
 Complete educational platform for modeling global AI adoption and its energy, cost, and emissions impact.
 
 ## Quick start
