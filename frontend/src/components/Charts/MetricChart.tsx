@@ -15,6 +15,7 @@ export function MetricChart({ chartId, title, value, unit, color, series }: Metr
   const maxValue = Math.max(...safeSeries, 1);
   const chartWidth = 320;
   const chartHeight = 160;
+  const titleId = `${chartId}-title`;
 
   const points = safeSeries
     .map((point, index) => {
@@ -35,7 +36,8 @@ export function MetricChart({ chartId, title, value, unit, color, series }: Metr
           {latestValue} <span>{unit}</span>
         </p>
       </header>
-      <svg className="metric-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label={`${title} trend chart`}>
+      <svg className="metric-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-labelledby={titleId}>
+        <title id={titleId}>{title} trend chart</title>
         <defs>
           <linearGradient id={`gradient-${chartId}`} x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor={color} stopOpacity="0.2" />
