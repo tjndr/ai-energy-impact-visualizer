@@ -42,4 +42,19 @@ describe('calculationService', () => {
       gpuHourlyCost: 3,
     })).toThrowError('Invalid scenario inputs');
   });
+
+  it('rejects non-positive tokens per minute', () => {
+    expect(() => calculationService.calculateScenario({
+      globalAdoptionRate: 0.5,
+      dailyUsageMinutes: 20,
+      tokensPerMinute: 0,
+      pueMultiplier: 1.4,
+      overheadMultiplier: 1.35,
+      growthRate: 0.2,
+      years: 5,
+      modelId: 'gpt4-128k',
+      regionCode: 'US',
+      gpuHourlyCost: 3,
+    })).toThrowError('Invalid scenario inputs');
+  });
 });
