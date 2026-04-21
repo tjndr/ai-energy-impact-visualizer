@@ -2,7 +2,7 @@ import { dataService } from './dataService.js';
 import { energyService } from './energyService.js';
 import { carbonService } from './carbonService.js';
 import { forecastService } from './forecastService.js';
-import { DEFAULT_PUE, DEFAULT_OVERHEAD_MULTIPLIER, DEFAULT_TOKENS_PER_MINUTE } from '../utils/constants.js';
+import { COOLING_COST_RATIO, DEFAULT_PUE, DEFAULT_OVERHEAD_MULTIPLIER, DEFAULT_TOKENS_PER_MINUTE, MIN_TOKENS_PER_SECOND } from '../utils/constants.js';
 import { secondsPerDay } from '../utils/conversions.js';
 import type { CalculationResult, ScenarioInput } from '../types.js';
 
@@ -45,9 +45,9 @@ export class CalculationService {
 
   calculateCost(energyKwh: number, electricityRatePerKwh: number, tokensPerDay: number, tokensPerSecond: number, gpuHourlyCost: number): number {
     const electricityCost = energyKwh * electricityRatePerKwh;
-    const safeTokensPerSecond = Math.max(tokensPerSecond, 1e-9);
+    const safeTokensPerSecond = Math.max(tokensPerSecond, MIN_TOKENS_PER_SECOND);
     const hardwareCost = tokensPerDay * (gpuHourlyCost / 3600 / safeTokensPerSecond);
-    const coolingCost = electricityCost * 0.4;
+    const coolingCost = electricityCost * COOLING_COST_RATIO;
     return electricityCost + hardwareCost + coolingCost;
   }
 

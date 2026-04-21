@@ -20,7 +20,7 @@
     "url": "https://github.com/tjndr/ai-energy-impact-visualizer/issues"
   },
   "homepage": "https://github.com/tjndr/ai-energy-impact-visualizer#readme",
-  "private": "true",
+  "private": true,
   "workspaces": [
     "backend",
     "frontend"

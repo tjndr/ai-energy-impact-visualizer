@@ -2,3 +2,5 @@ export const DEFAULT_GPU_EFFICIENCY_FLOPS_PER_JOULE = 1e11;
 export const DEFAULT_TOKENS_PER_MINUTE = 0.3;
 export const DEFAULT_OVERHEAD_MULTIPLIER = 1.35;
 export const DEFAULT_PUE = 1.4;
+export const MIN_TOKENS_PER_SECOND = 1e-9;
+export const COOLING_COST_RATIO = 0.4;
