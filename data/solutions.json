@@ -1,0 +1,14 @@
+{
+  "solutions": [
+    { "id": "quantization-int8", "category": "efficiency", "name": "INT8 Quantization", "description": "Reduce model precision from FP32 to INT8", "energySavingsPercent": 35, "implementationCost": 50000, "timeToImplement": "1-2 months", "researchPapers": ["arxiv:2104.08378"] },
+    { "id": "quantization-int4", "category": "efficiency", "name": "INT4 Quantization", "description": "Aggressive low-bit quantization", "energySavingsPercent": 50, "implementationCost": 90000, "timeToImplement": "2-3 months", "researchPapers": ["arxiv:2210.17323"] },
+    { "id": "pruning", "category": "efficiency", "name": "Structured Pruning", "description": "Reduce unused weights and channels", "energySavingsPercent": 45, "implementationCost": 75000, "timeToImplement": "2 months", "researchPapers": ["arxiv:1710.01878"] },
+    { "id": "distillation", "category": "efficiency", "name": "Knowledge Distillation", "description": "Train compact student models", "energySavingsPercent": 60, "implementationCost": 120000, "timeToImplement": "3-4 months", "researchPapers": ["arxiv:1503.02531"] },
+    { "id": "moe", "category": "efficiency", "name": "Sparse MoE", "description": "Activate subset of experts per token", "energySavingsPercent": 55, "implementationCost": 200000, "timeToImplement": "4-6 months", "researchPapers": ["arxiv:1701.06538"] },
+    { "id": "tpu", "category": "hardware", "name": "TPU Migration", "description": "Move from GPUs to custom TPUs", "energySavingsPercent": 40, "implementationCost": 500000, "timeToImplement": "6-9 months", "researchPapers": ["arxiv:1704.04760"] },
+    { "id": "liquid-cooling", "category": "hardware", "name": "Liquid Cooling", "description": "Advanced cooling in data centers", "energySavingsPercent": 25, "implementationCost": 350000, "timeToImplement": "3-6 months", "researchPapers": ["arxiv:2403.05199"] },
+    { "id": "renewables", "category": "renewable", "name": "Renewable Power Purchase", "description": "Increase green power procurement", "energySavingsPercent": 30, "implementationCost": 250000, "timeToImplement": "6-12 months", "researchPapers": ["arxiv:2305.07017"] },
+    { "id": "edge-inference", "category": "edge", "name": "Edge Inference", "description": "Shift to on-device inference", "energySavingsPercent": 90, "implementationCost": 180000, "timeToImplement": "4-8 months", "researchPapers": ["arxiv:2301.13861"] },
+    { "id": "grid-balancing", "category": "renewable", "name": "Grid Load Balancing", "description": "Schedule jobs around low-carbon hours", "energySavingsPercent": 20, "implementationCost": 100000, "timeToImplement": "2-4 months", "researchPapers": ["arxiv:2104.10350"] }
+  ]
+}

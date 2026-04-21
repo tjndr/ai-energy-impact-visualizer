@@ -1,0 +1,14 @@
+{
+  "regions": [
+    { "code": "US", "name": "United States", "population": 331900000, "gdp": 23315080758, "developmentLevel": "high", "currentAIAdoption": 0.35, "electricityPrice": 0.085, "carbonIntensity": 385, "renewablePercentage": 0.21 },
+    { "code": "IS", "name": "Iceland", "population": 393000, "gdp": 30720000000, "developmentLevel": "high", "currentAIAdoption": 0.32, "electricityPrice": 0.03, "carbonIntensity": 28, "renewablePercentage": 0.99 },
+    { "code": "SG", "name": "Singapore", "population": 5917000, "gdp": 501400000000, "developmentLevel": "high", "currentAIAdoption": 0.45, "electricityPrice": 0.18, "carbonIntensity": 408, "renewablePercentage": 0.04 },
+    { "code": "IN", "name": "India", "population": 1428000000, "gdp": 3410000000000, "developmentLevel": "middle", "currentAIAdoption": 0.19, "electricityPrice": 0.09, "carbonIntensity": 708, "renewablePercentage": 0.24 },
+    { "code": "CN", "name": "China", "population": 1412000000, "gdp": 17960000000000, "developmentLevel": "middle", "currentAIAdoption": 0.31, "electricityPrice": 0.08, "carbonIntensity": 550, "renewablePercentage": 0.31 },
+    { "code": "DE", "name": "Germany", "population": 84400000, "gdp": 4456000000000, "developmentLevel": "high", "currentAIAdoption": 0.29, "electricityPrice": 0.31, "carbonIntensity": 350, "renewablePercentage": 0.52 },
+    { "code": "BR", "name": "Brazil", "population": 203100000, "gdp": 2082000000000, "developmentLevel": "middle", "currentAIAdoption": 0.17, "electricityPrice": 0.14, "carbonIntensity": 92, "renewablePercentage": 0.86 },
+    { "code": "NG", "name": "Nigeria", "population": 223800000, "gdp": 477400000000, "developmentLevel": "low", "currentAIAdoption": 0.08, "electricityPrice": 0.12, "carbonIntensity": 432, "renewablePercentage": 0.19 },
+    { "code": "JP", "name": "Japan", "population": 124500000, "gdp": 4213000000000, "developmentLevel": "high", "currentAIAdoption": 0.28, "electricityPrice": 0.26, "carbonIntensity": 462, "renewablePercentage": 0.24 },
+    { "code": "CA", "name": "Canada", "population": 40500000, "gdp": 2140000000000, "developmentLevel": "high", "currentAIAdoption": 0.33, "electricityPrice": 0.11, "carbonIntensity": 130, "renewablePercentage": 0.67 }
+  ]
+}

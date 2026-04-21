@@ -1,0 +1,8 @@
+{
+  "papers": [
+    { "title": "Energy and Policy Considerations for Deep Learning in NLP", "authors": ["Emma Strubell", "Ananya Ganesh", "Andrew McCallum"], "year": 2019, "url": "https://arxiv.org/abs/1910.09381", "citations": 2000, "topics": ["efficiency", "energy", "nlp"] },
+    { "title": "Efficient Estimation of Word Representations in Vector Space", "authors": ["Tomas Mikolov"], "year": 2013, "url": "https://arxiv.org/abs/1301.3781", "citations": 30000, "topics": ["efficiency", "nlp"] },
+    { "title": "Switch Transformers", "authors": ["William Fedus", "Barret Zoph", "Noam Shazeer"], "year": 2021, "url": "https://arxiv.org/abs/2101.03961", "citations": 2500, "topics": ["mixture-of-experts", "scaling"] },
+    { "title": "LLM in a Flash", "authors": ["Tri Dao et al."], "year": 2024, "url": "https://arxiv.org/abs/2312.11514", "citations": 300, "topics": ["edge", "inference", "efficiency"] }
+  ]
+}
