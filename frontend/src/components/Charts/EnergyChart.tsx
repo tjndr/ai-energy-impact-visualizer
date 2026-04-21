@@ -8,6 +8,7 @@ interface EnergyChartProps {
 export function EnergyChart({ value }: EnergyChartProps): React.JSX.Element {
   return (
     <MetricChart
+      chartId="energy-per-day"
       title="Energy / day"
       value={value}
       unit="kWh"

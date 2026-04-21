@@ -8,6 +8,7 @@ interface CostChartProps {
 export function CostChart({ value }: CostChartProps): React.JSX.Element {
   return (
     <MetricChart
+      chartId="cost-per-day"
       title="Cost / day"
       value={value}
       unit="USD"

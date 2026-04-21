@@ -8,6 +8,7 @@ interface TokenChartProps {
 export function TokenChart({ value }: TokenChartProps): React.JSX.Element {
   return (
     <MetricChart
+      chartId="tokens-per-second"
       title="Tokens / second"
       value={value}
       unit="tps"

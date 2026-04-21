@@ -8,6 +8,7 @@ interface CarbonChartProps {
 export function CarbonChart({ value }: CarbonChartProps): React.JSX.Element {
   return (
     <MetricChart
+      chartId="carbon-per-day"
       title="CO2 / day"
       value={value}
       unit="gCO₂"

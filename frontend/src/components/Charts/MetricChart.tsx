@@ -2,6 +2,7 @@ import React from 'react';
 import { numberFormatter } from '../../utils/formatters';
 
 interface MetricChartProps {
+  chartId: string;
   title: string;
   value: number;
   unit: string;
@@ -9,12 +10,11 @@ interface MetricChartProps {
   series: number[];
 }
 
-export function MetricChart({ title, value, unit, color, series }: MetricChartProps): React.JSX.Element {
+export function MetricChart({ chartId, title, value, unit, color, series }: MetricChartProps): React.JSX.Element {
   const safeSeries = series.length === 0 ? [0] : series;
   const maxValue = Math.max(...safeSeries, 1);
   const chartWidth = 320;
   const chartHeight = 160;
-  const chartId = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
   const points = safeSeries
     .map((point, index) => {
@@ -30,7 +30,7 @@ export function MetricChart({ title, value, unit, color, series }: MetricChartPr
   return (
     <article className="metric-card">
       <header>
-        <h4>{title}</h4>
+        <p className="metric-title">{title}</p>
         <p>
           {latestValue} <span>{unit}</span>
         </p>
