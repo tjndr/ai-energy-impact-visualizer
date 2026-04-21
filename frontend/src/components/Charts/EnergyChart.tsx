@@ -1,5 +1,19 @@
 import React from 'react';
+import { MetricChart } from './MetricChart';
 
-export function EnergyChart(): React.JSX.Element {
-  return <div>EnergyChart visualization placeholder</div>;
+interface EnergyChartProps {
+  value: number;
+}
+
+export function EnergyChart({ value }: EnergyChartProps): React.JSX.Element {
+  return (
+    <MetricChart
+      chartId="energy-per-day"
+      title="Energy / day"
+      value={value}
+      unit="kWh"
+      color="#80ed99"
+      series={[0.61, 0.69, 0.77, 0.86, 0.95, 1].map((factor) => value * factor)}
+    />
+  );
 }

@@ -27,4 +27,34 @@ describe('calculationService', () => {
     expect(result.carbonGramsPerDay).toBeGreaterThan(0);
     expect(result.projections).toHaveLength(5);
   });
+
+  it('rejects invalid scenario inputs', () => {
+    expect(() => calculationService.calculateScenario({
+      globalAdoptionRate: 1.5,
+      dailyUsageMinutes: 20,
+      tokensPerMinute: 0.3,
+      pueMultiplier: 1.4,
+      overheadMultiplier: 1.35,
+      growthRate: 0.2,
+      years: 5,
+      modelId: 'gpt4-128k',
+      regionCode: 'US',
+      gpuHourlyCost: 3,
+    })).toThrowError('Invalid scenario inputs');
+  });
+
+  it('rejects non-positive tokens per minute', () => {
+    expect(() => calculationService.calculateScenario({
+      globalAdoptionRate: 0.5,
+      dailyUsageMinutes: 20,
+      tokensPerMinute: 0,
+      pueMultiplier: 1.4,
+      overheadMultiplier: 1.35,
+      growthRate: 0.2,
+      years: 5,
+      modelId: 'gpt4-128k',
+      regionCode: 'US',
+      gpuHourlyCost: 3,
+    })).toThrowError('Invalid scenario inputs');
+  });
 });

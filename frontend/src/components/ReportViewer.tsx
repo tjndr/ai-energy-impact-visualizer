@@ -7,7 +7,7 @@ export function ReportViewer(): React.JSX.Element {
   const metrics = useSelector((state: RootState) => state.data);
 
   return (
-    <section>
+    <section className="panel">
       <h3>Report Viewer</h3>
       <button onClick={() => downloadJsonReport(metrics)}>Export JSON Report</button>
     </section>

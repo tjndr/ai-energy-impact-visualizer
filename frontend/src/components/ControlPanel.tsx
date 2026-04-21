@@ -8,8 +8,9 @@ export function ControlPanel(): React.JSX.Element {
   const dispatch = useDispatch();
 
   return (
-    <section>
+    <section className="panel">
       <h3>Control Panel</h3>
+      <p>Adjust scenario assumptions and the dashboard refreshes with recalculated backend metrics.</p>
       <label>
         Global AI Adoption: {Math.round(scenario.globalAdoptionRate * 100)}%
         <input
