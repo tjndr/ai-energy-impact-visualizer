@@ -1,4 +1,4 @@
-# ![Logo](logo.svg) AI Energy Impact Visualizer
+# <img src="logo.svg" width="32" height="32" alt="Logo" style="vertical-align: middle; margin-right: 8px;"> AI Energy Impact Visualizer
 
 ![License](https://img.shields.io/badge/license-MIT-brightgreen) ![Node.js version](https://img.shields.io/badge/node-14.x%20|%2016.x-brightgreen) ![NPM version](https://img.shields.io/badge/npm-6.x%20|%207.x-brightgreen) ![Build Status](https://img.shields.io/badge/build-passing-brightgreen) ![GitHub Issues](https://img.shields.io/badge/issues-open-brightorange) ![Pull Requests](https://img.shields.io/badge/pull_requests-welcome-brightblue) ![Documentation](https://img.shields.io/badge/docs-available-brightgreen)  
 
