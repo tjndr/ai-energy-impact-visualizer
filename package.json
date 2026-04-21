@@ -1,0 +1,28 @@
+{
+  "name": "ai-energy-impact-visualizer",
+  "version": "1.0.0",
+  "description": "This repository contains tools and visualizations for analyzing the impact of AI on energy consumption and sustainability.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test --workspace backend && npm run test --workspace frontend",
+    "build": "npm run build --workspace backend && npm run build --workspace frontend",
+    "lint": "npm run lint --workspace backend && npm run lint --workspace frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjndr/ai-energy-impact-visualizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tjndr/ai-energy-impact-visualizer/issues"
+  },
+  "homepage": "https://github.com/tjndr/ai-energy-impact-visualizer#readme",
+  "private": "true",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}

@@ -1,15 +1,18 @@
 # AI Energy Impact Visualizer
 
-This repository contains tools and visualizations for analyzing the impact of AI on energy consumption and sustainability. 
+Complete educational platform for modeling global AI adoption and its energy, cost, and emissions impact.
 
-## Features
-- Data visualization
-- Energy consumption analysis
-- Sustainability metrics
+## Quick start
 
-## Installation
-1. Clone the repository
-2. Install the necessary dependencies
+```bash
+npm install
+npm run build
+npm test
+```
 
-## Usage
-Run the application using the appropriate command to start visualizing the data related to AI and energy impact.
+Run apps in development:
+
+```bash
+npm run dev --workspace backend
+npm run dev --workspace frontend
+```
