@@ -1,5 +1,18 @@
 import React from 'react';
+import { MetricChart } from './MetricChart';
 
-export function CarbonChart(): React.JSX.Element {
-  return <div>CarbonChart visualization placeholder</div>;
+interface CarbonChartProps {
+  value: number;
+}
+
+export function CarbonChart({ value }: CarbonChartProps): React.JSX.Element {
+  return (
+    <MetricChart
+      title="CO2 / day"
+      value={value}
+      unit="gCO₂"
+      color="#ef476f"
+      series={[0.6, 0.68, 0.76, 0.85, 0.93, 1].map((factor) => value * factor)}
+    />
+  );
 }

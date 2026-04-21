@@ -2,9 +2,9 @@ import React from 'react';
 
 export function SolutionsPanel(): React.JSX.Element {
   return (
-    <section>
+    <section className="panel">
       <h3>Solutions Panel</h3>
-      <p>Quantization, pruning, distillation and hardware/renewables impact overview.</p>
+      <p>Remediation tracks include quantization, pruning, distillation, and cleaner infrastructure scenarios.</p>
     </section>
   );
 }

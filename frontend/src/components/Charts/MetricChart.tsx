@@ -1,0 +1,49 @@
+import React from 'react';
+import { numberFormatter } from '../../utils/formatters';
+
+interface MetricChartProps {
+  title: string;
+  value: number;
+  unit: string;
+  color: string;
+  series: number[];
+}
+
+export function MetricChart({ title, value, unit, color, series }: MetricChartProps): React.JSX.Element {
+  const safeSeries = series.length === 0 ? [0] : series;
+  const maxValue = Math.max(...safeSeries, 1);
+  const chartWidth = 320;
+  const chartHeight = 160;
+  const chartId = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+  const points = safeSeries
+    .map((point, index) => {
+      const x = (index / Math.max(safeSeries.length - 1, 1)) * chartWidth;
+      const normalized = point / maxValue;
+      const y = chartHeight - normalized * chartHeight;
+      return `${x},${y}`;
+    })
+    .join(' ');
+
+  const latestValue = numberFormatter.format(value);
+
+  return (
+    <article className="metric-card">
+      <header>
+        <h4>{title}</h4>
+        <p>
+          {latestValue} <span>{unit}</span>
+        </p>
+      </header>
+      <svg className="metric-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label={`${title} trend chart`}>
+        <defs>
+          <linearGradient id={`gradient-${chartId}`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.2" />
+            <stop offset="100%" stopColor={color} stopOpacity="0.95" />
+          </linearGradient>
+        </defs>
+        <polyline points={points} fill="none" stroke={`url(#gradient-${chartId})`} strokeWidth={4} strokeLinecap="round" />
+      </svg>
+    </article>
+  );
+}

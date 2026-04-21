@@ -7,6 +7,35 @@ import { secondsPerDay } from '../utils/conversions.js';
 import type { CalculationResult, ScenarioInput } from '../types.js';
 
 export class CalculationService {
+  private hasValidScenarioInput(input: ScenarioInput & { modelId: string; regionCode: string; gpuHourlyCost: number }): boolean {
+    return (
+      Number.isFinite(input.globalAdoptionRate)
+      && input.globalAdoptionRate >= 0
+      && input.globalAdoptionRate <= 1
+      && Number.isFinite(input.dailyUsageMinutes)
+      && input.dailyUsageMinutes > 0
+      && input.dailyUsageMinutes <= 1440
+      && Number.isFinite(input.tokensPerMinute)
+      && input.tokensPerMinute > 0
+      && Number.isFinite(input.pueMultiplier)
+      && input.pueMultiplier > 0
+      && Number.isFinite(input.overheadMultiplier)
+      && input.overheadMultiplier > 0
+      && Number.isFinite(input.growthRate)
+      && input.growthRate >= -1
+      && Number.isFinite(input.years)
+      && Number.isInteger(input.years)
+      && input.years > 0
+      && input.years <= 100
+      && Number.isFinite(input.gpuHourlyCost)
+      && input.gpuHourlyCost >= 0
+      && typeof input.modelId === 'string'
+      && input.modelId.length > 0
+      && typeof input.regionCode === 'string'
+      && input.regionCode.length > 0
+    );
+  }
+
   calculateTokens(globalAdoptionRate: number, dailyUsageMinutes: number, tokensPerMinute = DEFAULT_TOKENS_PER_MINUTE): { perRegion: Array<{ regionCode: string; tokensPerDay: number }>; globalTokensPerDay: number; tokensPerSecond: number } {
     const perRegion = dataService.getRegions().map((region) => {
       const adoptionRate = Math.min(1, Math.max(0, globalAdoptionRate * region.currentAIAdoption));
@@ -52,6 +81,10 @@ export class CalculationService {
   }
 
   calculateScenario(input: ScenarioInput & { modelId: string; regionCode: string; gpuHourlyCost: number }): CalculationResult {
+    if (!this.hasValidScenarioInput(input)) {
+      throw new Error('Invalid scenario inputs');
+    }
+
     const region = dataService.getRegionByCode(input.regionCode);
     const model = dataService.getModelById(input.modelId);
     if (!region || !model) {
