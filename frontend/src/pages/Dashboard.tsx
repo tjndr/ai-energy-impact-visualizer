@@ -16,7 +16,7 @@ export function Dashboard(): React.JSX.Element {
     void calculateScenario(scenario).then((metrics) => {
       dispatch(setMetrics(metrics));
     }).catch(() => {
-      dispatch(setMetrics({ tokensPerSecond: 0, energyKwhPerDay: 0, costUsdPerDay: 0, carbonGramsPerDay: 0 }));
+      dispatch(setMetrics({ tokensPerSecond: 0, energyKwhPerDay: 0, costUsdPerDay: 0, carbonGramsPerDay: 0, projections: [] }));
     });
   }, [dispatch, scenario]);
 

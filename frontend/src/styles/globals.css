@@ -102,6 +102,7 @@ button:hover {
   background: #1e293b;
 }
 
+/* ── Metric cards ────────────────────────────────────── */
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -140,4 +141,481 @@ button:hover {
 .metric-chart {
   width: 100%;
   height: 120px;
+}
+
+/* ── Projection chart ────────────────────────────────── */
+.projection-card {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  background: #020817;
+  padding: 0.9rem;
+}
+
+.projection-card header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.projection-card header p {
+  margin: 0;
+}
+
+/* ── Scenario builder ────────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.scenario-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0;
+}
+
+.scenario-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+}
+
+.scenario-hint {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.scenario-select {
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.scenario-select:focus {
+  outline: 1px solid #22d3ee;
+}
+
+/* ── WorldMap / region bars ──────────────────────────── */
+.region-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.region-header {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr 80px;
+  gap: 0.5rem;
+  padding: 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.region-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr 80px;
+  gap: 0.5rem;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+}
+
+.region-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+.region-code {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.region-bar-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.region-bar-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.region-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.region-bar-label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  min-width: 50px;
+  text-align: right;
+}
+
+.region-renewable {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #80ed99;
+}
+
+.region-renewable-bar {
+  height: 6px;
+  background: #80ed99;
+  border-radius: 3px;
+  opacity: 0.7;
+  max-width: 40px;
+  transition: width 0.4s ease;
+}
+
+/* ── Heatmap ─────────────────────────────────────────── */
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.heatmap-cell {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.heatmap-cell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.heatmap-code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(148, 163, 184, 0.1);
+  color: #94a3b8;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.heatmap-intensity {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.heatmap-name {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin: 0.1rem 0 0.4rem;
+}
+
+.heatmap-bar-wrap {
+  height: 5px;
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.heatmap-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.heatmap-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  flex-wrap: wrap;
+}
+
+/* ── Solutions panel ─────────────────────────────────── */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.solution-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+
+.solution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.solution-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.solution-savings {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #80ed99;
+}
+
+.solution-name {
+  margin: 0 0 0.3rem;
+  font-size: 0.95rem;
+  color: #f8fafc;
+}
+
+.solution-desc {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin: 0 0 0.5rem;
+}
+
+.solution-bar-track {
+  height: 5px;
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.solution-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  opacity: 0.75;
+}
+
+.solution-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #64748b;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+/* ── Model comparison table ──────────────────────────── */
+.model-table-wrap {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.model-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.model-th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  color: #64748b;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  white-space: nowrap;
+}
+
+.model-th.sortable {
+  cursor: pointer;
+}
+
+.model-th.sortable:hover,
+.model-th.active {
+  color: #22d3ee;
+}
+
+.model-row {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  transition: background 0.15s;
+}
+
+.model-row:hover {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.model-name {
+  padding: 0.55rem 0.75rem;
+  font-weight: 600;
+  color: #f8fafc;
+  white-space: nowrap;
+}
+
+.model-org {
+  padding: 0.55rem 0.75rem;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.model-cell {
+  padding: 0.55rem 0.75rem;
+  color: #cbd5e1;
+}
+
+.model-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.model-energy-bar,
+.model-speed-bar {
+  height: 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.model-speed-bar {
+  background: #4cc9f0;
+  opacity: 0.7;
+}
+
+.efficiency-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+/* ── Research hub ────────────────────────────────────── */
+.research-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.research-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.5rem 0.75rem;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+}
+
+.research-search:focus {
+  outline: 1px solid #22d3ee;
+}
+
+.research-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.topic-chip {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.topic-chip.active {
+  background: rgba(34, 211, 238, 0.15);
+  border-color: #22d3ee;
+  color: #22d3ee;
+}
+
+.research-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.research-paper {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+}
+
+.research-paper-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.research-year {
+  font-size: 0.75rem;
+  color: #4cc9f0;
+  font-weight: 700;
+}
+
+.research-citations {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.research-title {
+  display: block;
+  font-weight: 600;
+  color: #93c5fd;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+  line-height: 1.35;
+}
+
+.research-title:hover {
+  color: #dbeafe;
+  text-decoration: underline;
+}
+
+.research-authors {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 0.4rem;
+}
+
+.research-topics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.topic-tag {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border-radius: 999px;
 }

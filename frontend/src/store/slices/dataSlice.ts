@@ -6,6 +6,7 @@ const initialState: DashboardMetrics = {
   energyKwhPerDay: 0,
   costUsdPerDay: 0,
   carbonGramsPerDay: 0,
+  projections: [],
 };
 
 const dataSlice = createSlice({
