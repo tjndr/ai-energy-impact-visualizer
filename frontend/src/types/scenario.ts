@@ -1,4 +1,7 @@
 export interface ScenarioInput {
+  modelId: string;
+  regionCode: string;
+  gpuHourlyCost: number;
   globalAdoptionRate: number;
   dailyUsageMinutes: number;
   tokensPerMinute: number;

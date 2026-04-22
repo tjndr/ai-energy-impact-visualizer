@@ -9,8 +9,8 @@ const scenarioSlice = createSlice({
     setScenario(_state, action: PayloadAction<ScenarioInput>) {
       return action.payload;
     },
-    updateScenarioField(state, action: PayloadAction<{ key: keyof ScenarioInput; value: number }>) {
-      state[action.payload.key] = action.payload.value;
+    updateScenarioField(state, action: PayloadAction<Partial<ScenarioInput>>) {
+      Object.assign(state, action.payload);
     },
   },
 });

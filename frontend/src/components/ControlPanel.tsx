@@ -10,7 +10,7 @@ export function ControlPanel(): React.JSX.Element {
   return (
     <section className="panel">
       <h3>Control Panel</h3>
-      <p>Adjust scenario assumptions and the dashboard refreshes with recalculated backend metrics.</p>
+      <p>Adjust scenario assumptions and the dashboard refreshes with recalculated metrics.</p>
       <label>
         Global AI Adoption: {Math.round(scenario.globalAdoptionRate * 100)}%
         <input
@@ -18,7 +18,7 @@ export function ControlPanel(): React.JSX.Element {
           min={0}
           max={100}
           value={scenario.globalAdoptionRate * 100}
-          onChange={(event) => dispatch(updateScenarioField({ key: 'globalAdoptionRate', value: Number(event.target.value) / 100 }))}
+          onChange={(event) => dispatch(updateScenarioField({ globalAdoptionRate: Number(event.target.value) / 100 }))}
         />
       </label>
       <label>
@@ -28,7 +28,7 @@ export function ControlPanel(): React.JSX.Element {
           min={1}
           max={240}
           value={scenario.dailyUsageMinutes}
-          onChange={(event) => dispatch(updateScenarioField({ key: 'dailyUsageMinutes', value: Number(event.target.value) }))}
+          onChange={(event) => dispatch(updateScenarioField({ dailyUsageMinutes: Number(event.target.value) }))}
         />
       </label>
     </section>
