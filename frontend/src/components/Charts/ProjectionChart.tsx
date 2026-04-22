@@ -26,7 +26,10 @@ export function ProjectionChart({ projections }: ProjectionChartProps): React.JS
   const minVal = Math.max(0, Math.min(...allVals) * 0.85);
   const maxVal = Math.max(...allVals) * 1.05;
 
-  const xScale = (i: number) => PAD.left + (i / (projections.length - 1)) * innerW;
+  const xScale = (i: number) => {
+    if (projections.length === 1) return PAD.left + innerW / 2;
+    return PAD.left + (i / (projections.length - 1)) * innerW;
+  };
   const yScale = (v: number) => PAD.top + innerH - ((v - minVal) / (maxVal - minVal)) * innerH;
 
   const linePath = projections.map((p, i) => `${i === 0 ? 'M' : 'L'}${xScale(i)},${yScale(p.value)}`).join(' ');
