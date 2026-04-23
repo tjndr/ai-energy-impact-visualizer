@@ -19,6 +19,12 @@ export function WorldMap(): React.JSX.Element {
   const totalEnergy = sorted.reduce((sum, region) => sum + region.energyKwhPerDay, 0);
   const totalCarbon = sorted.reduce((sum, region) => sum + region.carbonGramsPerDay, 0);
   const topRegion = sorted[0];
+  const perCapitaLeader = sorted.reduce<null | (typeof sorted)[number]>((leader, candidate) => {
+    if (!leader) return candidate;
+    const leaderPerCapita = leader.energyKwhPerDay / Math.max(leader.population, 1);
+    const candidatePerCapita = candidate.energyKwhPerDay / Math.max(candidate.population, 1);
+    return candidatePerCapita > leaderPerCapita ? candidate : leader;
+  }, null);
   const topRegionPopulation = topRegion ? compactNumberFormatter.format(topRegion.population) : '0';
   const topRegionEffectiveAdoption = topRegion ? Math.round(topRegion.effectiveAdoptionRate * 1000) / 10 : 0;
 
@@ -31,8 +37,9 @@ export function WorldMap(): React.JSX.Element {
       </p>
       {topRegion ? (
         <p style={{ marginTop: '-0.1rem', color: '#94a3b8', fontSize: '0.82rem' }}>
-          Review note: {topRegion.name} currently leads because modeled demand scales with population × effective adoption rate (
+          Ranking note: {topRegion.name} leads in absolute demand because demand scales with population × effective adoption (
           {topRegionPopulation} people × {topRegionEffectiveAdoption}%).
+          {perCapitaLeader ? ` Per-capita leader: ${perCapitaLeader.name}.` : ''}
         </p>
       ) : null}
       <div className="region-table">

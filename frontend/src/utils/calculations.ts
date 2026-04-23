@@ -18,16 +18,16 @@ export const MODELS: AIModel[] = [
 ];
 
 export const REGIONS: Region[] = [
-  { code: 'US', name: 'United States', population: 331_900_000, gdp: 23_315_080_758, developmentLevel: 'high', currentAIAdoption: 0.35, electricityPrice: 0.085, carbonIntensity: 385, renewablePercentage: 0.21 },
-  { code: 'IS', name: 'Iceland', population: 393_000, gdp: 30_720_000_000, developmentLevel: 'high', currentAIAdoption: 0.32, electricityPrice: 0.03, carbonIntensity: 28, renewablePercentage: 0.99 },
-  { code: 'SG', name: 'Singapore', population: 5_917_000, gdp: 501_400_000_000, developmentLevel: 'high', currentAIAdoption: 0.45, electricityPrice: 0.18, carbonIntensity: 408, renewablePercentage: 0.04 },
-  { code: 'IN', name: 'India', population: 1_428_000_000, gdp: 3_410_000_000_000, developmentLevel: 'middle', currentAIAdoption: 0.19, electricityPrice: 0.09, carbonIntensity: 708, renewablePercentage: 0.24 },
-  { code: 'CN', name: 'China', population: 1_412_000_000, gdp: 17_960_000_000_000, developmentLevel: 'middle', currentAIAdoption: 0.31, electricityPrice: 0.08, carbonIntensity: 550, renewablePercentage: 0.31 },
-  { code: 'DE', name: 'Germany', population: 84_400_000, gdp: 4_456_000_000_000, developmentLevel: 'high', currentAIAdoption: 0.29, electricityPrice: 0.31, carbonIntensity: 350, renewablePercentage: 0.52 },
-  { code: 'BR', name: 'Brazil', population: 203_100_000, gdp: 2_082_000_000_000, developmentLevel: 'middle', currentAIAdoption: 0.17, electricityPrice: 0.14, carbonIntensity: 92, renewablePercentage: 0.86 },
-  { code: 'NG', name: 'Nigeria', population: 223_800_000, gdp: 477_400_000_000, developmentLevel: 'low', currentAIAdoption: 0.08, electricityPrice: 0.12, carbonIntensity: 432, renewablePercentage: 0.19 },
-  { code: 'JP', name: 'Japan', population: 124_500_000, gdp: 4_213_000_000_000, developmentLevel: 'high', currentAIAdoption: 0.28, electricityPrice: 0.26, carbonIntensity: 462, renewablePercentage: 0.24 },
-  { code: 'CA', name: 'Canada', population: 40_500_000, gdp: 2_140_000_000_000, developmentLevel: 'high', currentAIAdoption: 0.33, electricityPrice: 0.11, carbonIntensity: 130, renewablePercentage: 0.67 },
+  { code: 'US', name: 'United States', population: 334_900_000, gdp: 27_360_900_000_000, developmentLevel: 'high', currentAIAdoption: 0.35, electricityPrice: 0.085, carbonIntensity: 385, renewablePercentage: 0.21 },
+  { code: 'IS', name: 'Iceland', population: 394_000, gdp: 31_000_000_000, developmentLevel: 'high', currentAIAdoption: 0.32, electricityPrice: 0.03, carbonIntensity: 28, renewablePercentage: 0.99 },
+  { code: 'SG', name: 'Singapore', population: 5_920_000, gdp: 501_400_000_000, developmentLevel: 'high', currentAIAdoption: 0.45, electricityPrice: 0.18, carbonIntensity: 408, renewablePercentage: 0.04 },
+  { code: 'IN', name: 'India', population: 1_429_000_000, gdp: 3_568_000_000_000, developmentLevel: 'middle', currentAIAdoption: 0.19, electricityPrice: 0.09, carbonIntensity: 708, renewablePercentage: 0.24 },
+  { code: 'CN', name: 'China', population: 1_410_000_000, gdp: 17_795_000_000_000, developmentLevel: 'middle', currentAIAdoption: 0.31, electricityPrice: 0.08, carbonIntensity: 550, renewablePercentage: 0.31 },
+  { code: 'DE', name: 'Germany', population: 84_500_000, gdp: 4_526_000_000_000, developmentLevel: 'high', currentAIAdoption: 0.29, electricityPrice: 0.31, carbonIntensity: 350, renewablePercentage: 0.52 },
+  { code: 'BR', name: 'Brazil', population: 203_100_000, gdp: 2_174_000_000_000, developmentLevel: 'middle', currentAIAdoption: 0.17, electricityPrice: 0.14, carbonIntensity: 92, renewablePercentage: 0.86 },
+  { code: 'NG', name: 'Nigeria', population: 227_900_000, gdp: 364_000_000_000, developmentLevel: 'low', currentAIAdoption: 0.08, electricityPrice: 0.12, carbonIntensity: 432, renewablePercentage: 0.19 },
+  { code: 'JP', name: 'Japan', population: 123_900_000, gdp: 4_213_000_000_000, developmentLevel: 'high', currentAIAdoption: 0.28, electricityPrice: 0.26, carbonIntensity: 462, renewablePercentage: 0.24 },
+  { code: 'CA', name: 'Canada', population: 40_900_000, gdp: 2_143_000_000_000, developmentLevel: 'high', currentAIAdoption: 0.33, electricityPrice: 0.11, carbonIntensity: 130, renewablePercentage: 0.67 },
 ];
 
 export const SOLUTIONS: Solution[] = [
