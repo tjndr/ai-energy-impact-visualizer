@@ -17,8 +17,8 @@ export function ProjectionChart({ projections }: ProjectionChartProps): React.JS
   }
 
   const W = 640;
-  const H = 200;
-  const PAD = { top: 20, right: 20, bottom: 36, left: 64 };
+  const H = 230;
+  const PAD = { top: 20, right: 20, bottom: 48, left: 64 };
   const innerW = W - PAD.left - PAD.right;
   const innerH = H - PAD.top - PAD.bottom;
 
@@ -70,9 +70,12 @@ export function ProjectionChart({ projections }: ProjectionChartProps): React.JS
           </g>
         ))}
 
+        <line x1={PAD.left} y1={PAD.top} x2={PAD.left} y2={H - PAD.bottom} stroke="#475569" strokeWidth={1.1} />
+        <line x1={PAD.left} y1={H - PAD.bottom} x2={W - PAD.right} y2={H - PAD.bottom} stroke="#475569" strokeWidth={1.1} />
+
         {/* X-axis year labels */}
         {projections.map((p, i) => (
-          <text key={i} x={xScale(i)} y={H - 8} textAnchor="middle" fill="#64748b" fontSize={11}>
+          <text key={i} x={xScale(i)} y={H - 22} textAnchor="middle" fill="#64748b" fontSize={11}>
             Yr {p.year}
           </text>
         ))}
@@ -97,6 +100,33 @@ export function ProjectionChart({ projections }: ProjectionChartProps): React.JS
         {projections.map((p, i) => (
           <circle key={i} cx={xScale(i)} cy={yScale(p.value)} r={3.5} fill="#22d3ee" />
         ))}
+
+        <text
+          x={W / 2}
+          y={H - 6}
+          textAnchor="middle"
+          fill="#94a3b8"
+          fontSize={10}
+        >
+          Projection year
+        </text>
+        <text
+          x={14}
+          y={H / 2}
+          textAnchor="middle"
+          fill="#94a3b8"
+          fontSize={10}
+          transform={`rotate(-90 14 ${H / 2})`}
+        >
+          Energy (kWh/day)
+        </text>
+
+        <g transform={`translate(${W - PAD.right - 180}, ${PAD.top + 8})`}>
+          <line x1={0} y1={0} x2={16} y2={0} stroke="#22d3ee" strokeWidth={2.5} />
+          <text x={22} y={3} fill="#94a3b8" fontSize={10}>Projected mean</text>
+          <line x1={0} y1={14} x2={16} y2={14} stroke="#22d3ee" strokeOpacity={0.35} strokeWidth={1.2} strokeDasharray="4 3" />
+          <text x={22} y={17} fill="#94a3b8" fontSize={10}>Confidence bounds</text>
+        </g>
       </svg>
     </article>
   );

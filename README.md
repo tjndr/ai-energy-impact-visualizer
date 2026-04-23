@@ -58,4 +58,5 @@ npm test
 
 ## Data Accuracy Notes
 
-Calculations are generated from validated scenario inputs and repository datasets in `data/*.json`. Frontend dashboard charts render values returned by backend report generation.
+Calculations are generated from validated scenario inputs and repository datasets in `data/*.json`.
+Regional data provenance and modeling assumptions are documented in `docs/DATA_SOURCES.md`.
