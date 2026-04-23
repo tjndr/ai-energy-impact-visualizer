@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useReducer } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store/store';
 import { CarbonChart } from './Charts/CarbonChart';
@@ -30,34 +30,61 @@ function calculateDomain(series: number[]): { min: number; max: number } {
   };
 }
 
+interface MetricHistoryState {
+  token: number[];
+  energy: number[];
+  cost: number[];
+  carbon: number[];
+}
+
+interface MetricSnapshot {
+  tokensPerSecond: number;
+  energyKwhPerDay: number;
+  costUsdPerDay: number;
+  carbonGramsPerDay: number;
+}
+
+function metricHistoryReducer(state: MetricHistoryState, snapshot: MetricSnapshot): MetricHistoryState {
+  return {
+    token: appendHistory(state.token, snapshot.tokensPerSecond),
+    energy: appendHistory(state.energy, snapshot.energyKwhPerDay),
+    cost: appendHistory(state.cost, snapshot.costUsdPerDay),
+    carbon: appendHistory(state.carbon, snapshot.carbonGramsPerDay),
+  };
+}
+
 export function EnergyDashboard(): React.JSX.Element {
   const metrics = useSelector((state: RootState) => state.data);
-  const [tokenHistory, setTokenHistory] = useState<number[]>([]);
-  const [energyHistory, setEnergyHistory] = useState<number[]>([]);
-  const [costHistory, setCostHistory] = useState<number[]>([]);
-  const [carbonHistory, setCarbonHistory] = useState<number[]>([]);
+  const [history, dispatchHistory] = useReducer(metricHistoryReducer, {
+    token: [],
+    energy: [],
+    cost: [],
+    carbon: [],
+  });
 
   useEffect(() => {
-    setTokenHistory((history) => appendHistory(history, metrics.tokensPerSecond));
-    setEnergyHistory((history) => appendHistory(history, metrics.energyKwhPerDay));
-    setCostHistory((history) => appendHistory(history, metrics.costUsdPerDay));
-    setCarbonHistory((history) => appendHistory(history, metrics.carbonGramsPerDay));
+    dispatchHistory({
+      tokensPerSecond: metrics.tokensPerSecond,
+      energyKwhPerDay: metrics.energyKwhPerDay,
+      costUsdPerDay: metrics.costUsdPerDay,
+      carbonGramsPerDay: metrics.carbonGramsPerDay,
+    });
   }, [metrics.tokensPerSecond, metrics.energyKwhPerDay, metrics.costUsdPerDay, metrics.carbonGramsPerDay]);
 
-  const tokenDomain = useMemo(() => calculateDomain(tokenHistory), [tokenHistory]);
-  const energyDomain = useMemo(() => calculateDomain(energyHistory), [energyHistory]);
-  const costDomain = useMemo(() => calculateDomain(costHistory), [costHistory]);
-  const carbonDomain = useMemo(() => calculateDomain(carbonHistory), [carbonHistory]);
+  const tokenDomain = useMemo(() => calculateDomain(history.token), [history.token]);
+  const energyDomain = useMemo(() => calculateDomain(history.energy), [history.energy]);
+  const costDomain = useMemo(() => calculateDomain(history.cost), [history.cost]);
+  const carbonDomain = useMemo(() => calculateDomain(history.carbon), [history.carbon]);
 
   return (
     <section className="panel">
       <h3>Energy Dashboard</h3>
       <p>Live metrics computed from model efficiency, global adoption rates, and regional energy assumptions.</p>
       <div className="metric-grid">
-        <TokenChart value={metrics.tokensPerSecond} series={tokenHistory} yMin={tokenDomain.min} yMax={tokenDomain.max} />
-        <EnergyChart value={metrics.energyKwhPerDay} series={energyHistory} yMin={energyDomain.min} yMax={energyDomain.max} />
-        <CostChart value={metrics.costUsdPerDay} series={costHistory} yMin={costDomain.min} yMax={costDomain.max} />
-        <CarbonChart value={metrics.carbonGramsPerDay} series={carbonHistory} yMin={carbonDomain.min} yMax={carbonDomain.max} />
+        <TokenChart value={metrics.tokensPerSecond} series={history.token} yMin={tokenDomain.min} yMax={tokenDomain.max} />
+        <EnergyChart value={metrics.energyKwhPerDay} series={history.energy} yMin={energyDomain.min} yMax={energyDomain.max} />
+        <CostChart value={metrics.costUsdPerDay} series={history.cost} yMin={costDomain.min} yMax={costDomain.max} />
+        <CarbonChart value={metrics.carbonGramsPerDay} series={history.carbon} yMin={carbonDomain.min} yMax={carbonDomain.max} />
       </div>
       <div style={{ marginTop: '1rem' }}>
         <ProjectionChart projections={metrics.projections} />
