@@ -3,9 +3,12 @@ import { MetricChart } from './MetricChart';
 
 interface CostChartProps {
   value: number;
+  series: number[];
+  yMin: number;
+  yMax: number;
 }
 
-export function CostChart({ value }: CostChartProps): React.JSX.Element {
+export function CostChart({ value, series, yMin, yMax }: CostChartProps): React.JSX.Element {
   return (
     <MetricChart
       chartId="cost-per-day"
@@ -13,7 +16,9 @@ export function CostChart({ value }: CostChartProps): React.JSX.Element {
       value={value}
       unit="USD"
       color="#ffd166"
-      series={[0.54, 0.62, 0.72, 0.83, 0.91, 1].map((factor) => value * factor)}
+      series={series}
+      yMin={yMin}
+      yMax={yMax}
     />
   );
 }

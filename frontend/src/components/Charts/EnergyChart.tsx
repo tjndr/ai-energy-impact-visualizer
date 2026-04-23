@@ -3,9 +3,12 @@ import { MetricChart } from './MetricChart';
 
 interface EnergyChartProps {
   value: number;
+  series: number[];
+  yMin: number;
+  yMax: number;
 }
 
-export function EnergyChart({ value }: EnergyChartProps): React.JSX.Element {
+export function EnergyChart({ value, series, yMin, yMax }: EnergyChartProps): React.JSX.Element {
   return (
     <MetricChart
       chartId="energy-per-day"
@@ -13,7 +16,9 @@ export function EnergyChart({ value }: EnergyChartProps): React.JSX.Element {
       value={value}
       unit="kWh"
       color="#80ed99"
-      series={[0.61, 0.69, 0.77, 0.86, 0.95, 1].map((factor) => value * factor)}
+      series={series}
+      yMin={yMin}
+      yMax={yMax}
     />
   );
 }

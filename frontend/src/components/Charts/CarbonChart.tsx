@@ -3,9 +3,12 @@ import { MetricChart } from './MetricChart';
 
 interface CarbonChartProps {
   value: number;
+  series: number[];
+  yMin: number;
+  yMax: number;
 }
 
-export function CarbonChart({ value }: CarbonChartProps): React.JSX.Element {
+export function CarbonChart({ value, series, yMin, yMax }: CarbonChartProps): React.JSX.Element {
   return (
     <MetricChart
       chartId="carbon-per-day"
@@ -13,7 +16,9 @@ export function CarbonChart({ value }: CarbonChartProps): React.JSX.Element {
       value={value}
       unit="gCO₂"
       color="#ef476f"
-      series={[0.6, 0.68, 0.76, 0.85, 0.93, 1].map((factor) => value * factor)}
+      series={series}
+      yMin={yMin}
+      yMax={yMax}
     />
   );
 }

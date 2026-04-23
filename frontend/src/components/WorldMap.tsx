@@ -16,8 +16,11 @@ export function WorldMap(): React.JSX.Element {
   const scenario = useSelector((state: RootState) => state.scenario);
   const breakdown = useMemo(() => calculateRegionBreakdown(scenario), [scenario]);
   const sorted = [...breakdown].sort((a, b) => b.energyKwhPerDay - a.energyKwhPerDay);
-  const maxEnergy = Math.max(...sorted.map((r) => r.energyKwhPerDay), 1);
-  const maxCarbon = Math.max(...sorted.map((r) => r.carbonGramsPerDay), 1);
+  const totalEnergy = sorted.reduce((sum, region) => sum + region.energyKwhPerDay, 0);
+  const totalCarbon = sorted.reduce((sum, region) => sum + region.carbonGramsPerDay, 0);
+  const topRegion = sorted[0];
+  const topRegionPopulation = topRegion ? compactNumberFormatter.format(topRegion.population) : '0';
+  const topRegionEffectiveAdoption = topRegion ? Math.round(topRegion.effectiveAdoptionRate * 1000) / 10 : 0;
 
   return (
     <section className="panel">
@@ -26,6 +29,12 @@ export function WorldMap(): React.JSX.Element {
         Estimated AI energy consumption and CO₂ emissions by region, based on population, local AI adoption rate, and grid
         carbon intensity. Bar width = share of global total.
       </p>
+      {topRegion ? (
+        <p style={{ marginTop: '-0.1rem', color: '#94a3b8', fontSize: '0.82rem' }}>
+          Review note: {topRegion.name} currently leads because modeled demand scales with population × effective adoption rate (
+          {topRegionPopulation} people × {topRegionEffectiveAdoption}%).
+        </p>
+      ) : null}
       <div className="region-table">
         <div className="region-header">
           <span>Region</span>
@@ -33,7 +42,10 @@ export function WorldMap(): React.JSX.Element {
           <span>CO₂ (kg/day)</span>
           <span style={{ color: '#64748b', fontSize: '0.75rem' }}>Renewable %</span>
         </div>
-        {sorted.map((r) => (
+        {sorted.map((r) => {
+          const energyShare = totalEnergy > 0 ? (r.energyKwhPerDay / totalEnergy) * 100 : 0;
+          const carbonShare = totalCarbon > 0 ? (r.carbonGramsPerDay / totalCarbon) * 100 : 0;
+          return (
           <div key={r.code} className="region-row">
             <div className="region-name">
               <span className="region-code">{r.code}</span>
@@ -45,12 +57,12 @@ export function WorldMap(): React.JSX.Element {
                 <div
                   className="region-bar-fill"
                   style={{
-                    width: `${(r.energyKwhPerDay / maxEnergy) * 100}%`,
+                    width: `${energyShare}%`,
                     background: '#4cc9f0',
                   }}
                 />
               </div>
-              <span className="region-bar-label">{compactNumberFormatter.format(r.energyKwhPerDay)}</span>
+              <span className="region-bar-label">{compactNumberFormatter.format(r.energyKwhPerDay)} ({energyShare.toFixed(1)}%)</span>
             </div>
 
             <div className="region-bar-cell">
@@ -58,13 +70,13 @@ export function WorldMap(): React.JSX.Element {
                 <div
                   className="region-bar-fill"
                   style={{
-                    width: `${(r.carbonGramsPerDay / maxCarbon) * 100}%`,
+                    width: `${carbonShare}%`,
                     background: carbonColor(r.carbonIntensity),
                   }}
                 />
               </div>
               <span className="region-bar-label" style={{ color: carbonColor(r.carbonIntensity) }}>
-                {compactNumberFormatter.format(r.carbonGramsPerDay / 1000)}
+                {compactNumberFormatter.format(r.carbonGramsPerDay / 1000)} ({carbonShare.toFixed(1)}%)
               </span>
             </div>
 
@@ -73,7 +85,8 @@ export function WorldMap(): React.JSX.Element {
               <span>{Math.round(r.renewablePercentage * 100)}%</span>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
