@@ -130,6 +130,9 @@ export function calculateScenarioLocally(scenario: ScenarioInput): DashboardMetr
 export interface RegionMetrics {
   code: string;
   name: string;
+  population: number;
+  currentAIAdoption: number;
+  effectiveAdoptionRate: number;
   tokensPerDay: number;
   energyKwhPerDay: number;
   carbonGramsPerDay: number;
@@ -141,8 +144,8 @@ export function calculateRegionBreakdown(scenario: ScenarioInput): RegionMetrics
   const model = MODELS.find((m) => m.id === scenario.modelId) ?? MODELS[0];
 
   return REGIONS.map((r) => {
-    const adoptionRate = Math.min(1, Math.max(0, scenario.globalAdoptionRate * r.currentAIAdoption));
-    const tokensPerDay = r.population * adoptionRate * scenario.dailyUsageMinutes * scenario.tokensPerMinute;
+    const effectiveAdoptionRate = Math.min(1, Math.max(0, scenario.globalAdoptionRate * r.currentAIAdoption));
+    const tokensPerDay = r.population * effectiveAdoptionRate * scenario.dailyUsageMinutes * scenario.tokensPerMinute;
     const flopsPerDay = tokensPerDay * model.flopsPerToken;
     const baseEnergyKwh = flopsPerDay / (GPU_EFFICIENCY_FLOPS_PER_JOULE * 3_600 * 1_000);
     const energyKwhPerDay = baseEnergyKwh * scenario.pueMultiplier * scenario.overheadMultiplier;
@@ -150,6 +153,9 @@ export function calculateRegionBreakdown(scenario: ScenarioInput): RegionMetrics
     return {
       code: r.code,
       name: r.name,
+      population: r.population,
+      currentAIAdoption: r.currentAIAdoption,
+      effectiveAdoptionRate,
       tokensPerDay,
       energyKwhPerDay,
       carbonGramsPerDay,

@@ -8,11 +8,17 @@ interface MetricChartProps {
   unit: string;
   color: string;
   series: number[];
+  yMin?: number;
+  yMax?: number;
 }
 
-export function MetricChart({ chartId, title, value, unit, color, series }: MetricChartProps): React.JSX.Element {
+export function MetricChart({ chartId, title, value, unit, color, series, yMin, yMax }: MetricChartProps): React.JSX.Element {
   const safeSeries = series.length === 0 ? [0] : series;
-  const maxValue = Math.max(...safeSeries, 1);
+  const computedMin = Math.min(...safeSeries, 0);
+  const computedMax = Math.max(...safeSeries, 1);
+  const minValue = yMin ?? computedMin;
+  const maxValue = Math.max(yMax ?? computedMax, minValue + 1e-9);
+  const range = maxValue - minValue;
   const chartWidth = 320;
   const chartHeight = 160;
   const titleId = `${chartId}-title`;
@@ -20,7 +26,7 @@ export function MetricChart({ chartId, title, value, unit, color, series }: Metr
   const points = safeSeries
     .map((point, index) => {
       const x = (index / Math.max(safeSeries.length - 1, 1)) * chartWidth;
-      const normalized = point / maxValue;
+      const normalized = Math.max(0, Math.min(1, (point - minValue) / range));
       const y = chartHeight - normalized * chartHeight;
       return `${x},${y}`;
     })

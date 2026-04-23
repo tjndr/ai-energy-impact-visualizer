@@ -3,9 +3,12 @@ import { MetricChart } from './MetricChart';
 
 interface TokenChartProps {
   value: number;
+  series: number[];
+  yMin: number;
+  yMax: number;
 }
 
-export function TokenChart({ value }: TokenChartProps): React.JSX.Element {
+export function TokenChart({ value, series, yMin, yMax }: TokenChartProps): React.JSX.Element {
   return (
     <MetricChart
       chartId="tokens-per-second"
@@ -13,7 +16,9 @@ export function TokenChart({ value }: TokenChartProps): React.JSX.Element {
       value={value}
       unit="tps"
       color="#4cc9f0"
-      series={[0.58, 0.66, 0.73, 0.84, 0.92, 1].map((factor) => value * factor)}
+      series={series}
+      yMin={yMin}
+      yMax={yMax}
     />
   );
 }
