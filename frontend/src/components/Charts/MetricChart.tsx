@@ -125,7 +125,7 @@ export function MetricChart({ chartId, title, value, unit, color, series, yMin, 
               stroke="#64748b"
             />
             <text x={xScale(index)} y={chartHeight - 6} textAnchor="middle" fill="#64748b" fontSize={9}>
-              t{index - (safeSeries.length - 1)}
+              {index === safeSeries.length - 1 ? 'Now' : `T${index - (safeSeries.length - 1)}`}
             </text>
           </g>
         ))}

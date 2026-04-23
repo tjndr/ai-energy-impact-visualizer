@@ -1,6 +1,7 @@
 # Data Sources
 
 This project uses a mixed dataset of measured country indicators and explicit modeling coefficients.
+Unless noted otherwise, country indicator baselines are maintained as a rounded **2023 reference snapshot** for consistency across all charts.
 
 ## Regional indicators (`data/regions.json`, mirrored in `frontend/src/utils/calculations.ts`)
 
